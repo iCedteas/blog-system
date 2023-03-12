@@ -148,13 +148,6 @@
                 <version>${blog.version}</version>
             </dependency>
 
-            <!-- 核心模块-->
-            <dependency>
-                <groupId>com.blog</groupId>
-                <artifactId>blog-framework</artifactId>
-                <version>${blog.version}</version>
-            </dependency>
-
             <!-- 系统模块-->
             <dependency>
                 <groupId>com.blog</groupId>
@@ -169,11 +162,17 @@
                 <version>${blog.version}</version>
             </dependency>
 
+            <!-- mybatis-->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.5.9</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
     <modules>
-        <module>blog-framework</module>
         <module>blog-system</module>
         <module>blog-quartz</module>
         <module>blog-generator</module>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.mapper.article.ArticleMapper">
+
+    <resultMap id="BaseResultMap" type="Article">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="tag" column="tag" jdbcType="VARCHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="isTop" column="is_top" jdbcType="BIT"/>
+            <result property="commentCount" column="comment_count" jdbcType="INTEGER"/>
+            <result property="browseCount" column="browse_count" jdbcType="INTEGER"/>
+            <result property="createById" column="create_by_id" jdbcType="BIGINT"/>
+            <result property="delFlag" column="del_flag" jdbcType="CHAR"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,tag,title,
+        content,is_top,comment_count,
+        browse_count,create_by_id,del_flag,
+        create_by,create_time,update_by,
+        update_time,remark
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from blog_article
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from blog_article
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.blog.domain.entity.article.Article" useGeneratedKeys="true">
+        insert into blog_article
+        ( id,tag,title
+        ,content,is_top,comment_count
+        ,browse_count,create_by_id,del_flag
+        ,create_by,create_time,update_by
+        ,update_time,remark)
+        values (#{id,jdbcType=BIGINT},#{tag,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR}
+        ,#{content,jdbcType=VARCHAR},#{isTop,jdbcType=BIT},#{commentCount,jdbcType=INTEGER}
+        ,#{browseCount,jdbcType=INTEGER},#{createById,jdbcType=BIGINT},#{delFlag,jdbcType=CHAR}
+        ,#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR}
+        ,#{updateTime,jdbcType=TIMESTAMP},#{remark,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.blog.domain.entity.article.Article" useGeneratedKeys="true">
+        insert into blog_article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="tag != null">tag,</if>
+                <if test="title != null">title,</if>
+                <if test="content != null">content,</if>
+                <if test="isTop != null">is_top,</if>
+                <if test="commentCount != null">comment_count,</if>
+                <if test="browseCount != null">browse_count,</if>
+                <if test="createById != null">create_by_id,</if>
+                <if test="delFlag != null">del_flag,</if>
+                <if test="createBy != null">create_by,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="updateBy != null">update_by,</if>
+                <if test="updateTime != null">update_time,</if>
+                <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="tag != null">#{tag,jdbcType=VARCHAR},</if>
+                <if test="title != null">#{title,jdbcType=VARCHAR},</if>
+                <if test="content != null">#{content,jdbcType=VARCHAR},</if>
+                <if test="isTop != null">#{isTop,jdbcType=BIT},</if>
+                <if test="commentCount != null">#{commentCount,jdbcType=INTEGER},</if>
+                <if test="browseCount != null">#{browseCount,jdbcType=INTEGER},</if>
+                <if test="createById != null">#{createById,jdbcType=BIGINT},</if>
+                <if test="delFlag != null">#{delFlag,jdbcType=CHAR},</if>
+                <if test="createBy != null">#{createBy,jdbcType=VARCHAR},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="updateBy != null">#{updateBy,jdbcType=VARCHAR},</if>
+                <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+                <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.blog.domain.entity.article.Article">
+        update blog_article
+        <set>
+                <if test="tag != null">
+                    tag = #{tag,jdbcType=VARCHAR},
+                </if>
+                <if test="title != null">
+                    title = #{title,jdbcType=VARCHAR},
+                </if>
+                <if test="content != null">
+                    content = #{content,jdbcType=VARCHAR},
+                </if>
+                <if test="isTop != null">
+                    is_top = #{isTop,jdbcType=BIT},
+                </if>
+                <if test="commentCount != null">
+                    comment_count = #{commentCount,jdbcType=INTEGER},
+                </if>
+                <if test="browseCount != null">
+                    browse_count = #{browseCount,jdbcType=INTEGER},
+                </if>
+                <if test="createById != null">
+                    create_by_id = #{createById,jdbcType=BIGINT},
+                </if>
+                <if test="delFlag != null">
+                    del_flag = #{delFlag,jdbcType=CHAR},
+                </if>
+                <if test="createBy != null">
+                    create_by = #{createBy,jdbcType=VARCHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updateBy != null">
+                    update_by = #{updateBy,jdbcType=VARCHAR},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="remark != null">
+                    remark = #{remark,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.blog.domain.entity.article.Article">
+        update blog_article
+        set 
+            tag =  #{tag,jdbcType=VARCHAR},
+            title =  #{title,jdbcType=VARCHAR},
+            content =  #{content,jdbcType=VARCHAR},
+            is_top =  #{isTop,jdbcType=BIT},
+            comment_count =  #{commentCount,jdbcType=INTEGER},
+            browse_count =  #{browseCount,jdbcType=INTEGER},
+            create_by_id =  #{createById,jdbcType=BIGINT},
+            del_flag =  #{delFlag,jdbcType=CHAR},
+            create_by =  #{createBy,jdbcType=VARCHAR},
+            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            update_by =  #{updateBy,jdbcType=VARCHAR},
+            update_time =  #{updateTime,jdbcType=TIMESTAMP},
+            remark =  #{remark,jdbcType=VARCHAR}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>

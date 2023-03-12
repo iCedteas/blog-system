@@ -21,6 +21,9 @@ public class BaseEntity implements Serializable
     @JsonIgnore
     private String searchValue;
 
+    /** 删除标志'0'未删除,'2'已删除 */
+    private String delFlag;
+
     /** 创建者 */
     private String createBy;
 
@@ -100,6 +103,14 @@ public class BaseEntity implements Serializable
     public void setRemark(String remark)
     {
         this.remark = remark;
+    }
+
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
     }
 
     public Map<String, Object> getParams()

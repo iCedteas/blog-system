@@ -73,7 +73,7 @@ import com.blog.common.annotation.Excel;
 import com.blog.common.annotation.Excel.ColumnType;
 import com.blog.common.annotation.Excel.Type;
 import com.blog.common.annotation.Excels;
-import com.blog.common.config.RuoYiConfig;
+import com.blog.common.config.BlogConfig;
 import com.blog.common.core.domain.AjaxResult;
 import com.blog.common.core.text.Convert;
 import com.blog.common.exception.UtilException;
@@ -1332,7 +1332,7 @@ public class ExcelUtil<T>
      */
     public String getAbsoluteFile(String filename)
     {
-        String downloadPath = RuoYiConfig.getDownloadPath() + filename;
+        String downloadPath = BlogConfig.getDownloadPath() + filename;
         File desc = new File(downloadPath);
         if (!desc.getParentFile().exists())
         {
