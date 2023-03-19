@@ -2,7 +2,7 @@ package com.blog.aspectj;
 
 import java.util.Objects;
 
-import com.blog.datasource.DynamicDataSourceContextHolder;
+import com.blog.config.datasource.DynamicDataSourceContextHolder;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

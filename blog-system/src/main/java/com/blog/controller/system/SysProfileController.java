@@ -1,7 +1,7 @@
 package com.blog.controller.system;
 
 import com.blog.service.system.ISysUserService;
-import com.blog.web.service.TokenService;
+import com.blog.service.auth.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

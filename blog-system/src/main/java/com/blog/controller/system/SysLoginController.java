@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.blog.service.system.ISysMenuService;
-import com.blog.web.service.SysPermissionService;
+import com.blog.service.auth.SysPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,7 @@ import com.blog.common.core.domain.entity.SysMenu;
 import com.blog.common.core.domain.entity.SysUser;
 import com.blog.common.core.domain.model.LoginBody;
 import com.blog.common.utils.SecurityUtils;
-import com.blog.web.service.SysLoginService;
+import com.blog.service.auth.SysLoginService;
 
 /**
  * 登录验证

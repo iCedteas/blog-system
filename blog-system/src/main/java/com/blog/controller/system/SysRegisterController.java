@@ -9,7 +9,7 @@ import com.blog.common.core.controller.BaseController;
 import com.blog.common.core.domain.AjaxResult;
 import com.blog.common.core.domain.model.RegisterBody;
 import com.blog.common.utils.StringUtils;
-import com.blog.web.service.SysRegisterService;
+import com.blog.service.auth.SysRegisterService;
 
 /**
  * 注册验证

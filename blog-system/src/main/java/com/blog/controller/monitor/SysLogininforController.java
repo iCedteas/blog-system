@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.blog.domain.entity.system.SysLogininfor;
 import com.blog.service.system.ISysLogininforService;
-import com.blog.web.service.SysPasswordService;
+import com.blog.service.auth.SysPasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
