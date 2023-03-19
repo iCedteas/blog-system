@@ -15,7 +15,7 @@ public interface IArticle
     /**
      * 查询文章列表
      *
-     * @return {@link List}<{@link Article}>
+     * @return {@code List<Article> }
      */
     List<Article> queryArticleList();
 }

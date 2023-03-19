@@ -2,6 +2,8 @@ package com.blog.mapper.article;
 
 import com.blog.domain.entity.article.Article;
 
+import java.util.List;
+
 /**
  * 文章映射器
  *
@@ -13,12 +15,12 @@ import com.blog.domain.entity.article.Article;
 public interface ArticleMapper
 {
     /**
-     * 按主键删除
+     * 删除通过id
      *
      * @param id id
      * @return int
      */
-    int deleteByPrimaryKey(Long id);
+    int deleteById(Long id);
 
     /**
      * 插入
@@ -36,13 +38,14 @@ public interface ArticleMapper
      */
     int insertSelective(Article article);
 
+
     /**
-     * 查询通过主键
+     * 查询通过id
      *
      * @param id id
-     * @return {@link Article}
+     * @return {@code Article } 结果
      */
-    Article selectByPrimaryKey(Long id);
+    Article selectById(Long id);
 
     /**
      * 更新通过主键选择性
@@ -50,7 +53,7 @@ public interface ArticleMapper
      * @param article 文章
      * @return int
      */
-    int updateByPrimaryKeySelective(Article article);
+    int updateByIdSelective(Article article);
 
     /**
      * 更新通过主键
@@ -58,6 +61,13 @@ public interface ArticleMapper
      * @param article 文章
      * @return int
      */
-    int updateByPrimaryKey(Article article);
+    int updateById(Article article);
+
+    /**
+     * 查询文章列表
+     *
+     * @return {@code List<Article> }
+     */
+    List<Article> selectArticleList();
 
 }

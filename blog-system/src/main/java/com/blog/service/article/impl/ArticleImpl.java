@@ -1,9 +1,11 @@
 package com.blog.service.article.impl;
 
 import com.blog.domain.entity.article.Article;
+import com.blog.mapper.article.ArticleMapper;
 import com.blog.service.article.IArticle;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,13 +17,16 @@ import java.util.List;
 @Service
 public class ArticleImpl implements IArticle
 {
+    @Resource
+    private ArticleMapper articleMapper;
+
     /**
      * 查询文章列表
      *
-     * @return {@link List}<{@link Article}>
+     * @return {@code List<Article> }
      */
     @Override
     public List<Article> queryArticleList() {
-        return null;
+        return articleMapper.selectArticleList();
     }
 }

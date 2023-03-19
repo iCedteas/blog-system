@@ -29,14 +29,14 @@
         update_time,remark
     </sql>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from blog_article
         where  id = #{id,jdbcType=BIGINT} 
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <delete id="deleteById" parameterType="java.lang.Long">
         delete from blog_article
         where  id = #{id,jdbcType=BIGINT} 
     </delete>
@@ -88,7 +88,7 @@
                 <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.blog.domain.entity.article.Article">
+    <update id="updateByIdSelective" parameterType="com.blog.domain.entity.article.Article">
         update blog_article
         <set>
                 <if test="tag != null">
@@ -133,7 +133,7 @@
         </set>
         where   id = #{id,jdbcType=BIGINT} 
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.blog.domain.entity.article.Article">
+    <update id="updateById" parameterType="com.blog.domain.entity.article.Article">
         update blog_article
         set 
             tag =  #{tag,jdbcType=VARCHAR},
@@ -151,4 +151,22 @@
             remark =  #{remark,jdbcType=VARCHAR}
         where   id = #{id,jdbcType=BIGINT} 
     </update>
+    <select id="selectArticleList" parameterType="com.blog.domain.entity.article.Article" resultMap="BaseResultMap">
+        <include refid="Base_Column_List"/>
+        <where>
+            <if test="tag != null and tag != ''">
+                AND tag = #{tag}
+            </if>
+            <if test="title != null and title != ''">
+                AND title like concat('%', #{title}, '%')
+            </if>
+            <if test="isTop != null">
+                AND is_top = #{isTop}
+            </if>
+            <if test="createById != null">
+                AND create_by_id = #{createById}
+            </if>
+        </where>
+        order by dict_sort asc
+    </select>
 </mapper>
